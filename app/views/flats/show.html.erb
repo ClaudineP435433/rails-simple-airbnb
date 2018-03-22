@@ -1,0 +1,33 @@
+
+<%= image_tag @flat.picture, class: "picture" %>
+
+<div class="wrapper">
+  <div class="main">
+    <div class="main-title">
+      <h2><%= @flat.name %></h2>
+      <p><%= @flat.address %></p>
+    </div>
+    <div class="main-description">
+      <h3>A bit more about this flat...</h3>
+      <p><%= @flat.description %></p>
+    </div>
+  </div>
+  <div class="details">
+    <div class="details-book">
+      <%= simple_form_for [@flat] do |f| %>
+        <%= f.input :name, label: "From :"%>
+        <%= f.input :address, label: "To :"%>
+        <%= f.input :number_of_guests, collection: [1,2,3,4,5,6,7,8,9,10], prompt: true%>
+        <%= f.button :submit, class: "btn btn-primary"%>
+      <% end %>
+    </div>
+    <div class="details-details">
+      <h2>Details</h2>
+      <div class="icone">
+          <i class="fas fa-users"> <%= @flat.number_of_guests %></i>
+          <i class="fas fa-euro-sign"> <%= @flat.price_per_night %></i>
+      </div>
+    </div>
+    <div class="details-share"></div>
+  </div>
+</div>

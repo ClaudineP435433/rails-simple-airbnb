@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="title">
+    <h1>All our Flats</h1>
+    <p>You searched for . We found 3 flats out of our 3 on our website.</p>
+  </div>
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-xs-4">
+        <div class="flat">
+          <%= image_tag flat.picture, class: "flat-picture" %>
+          <div class="flat-details">
+            <h5><%= flat.name %></h5>
+            <p><%= flat.address %></p>
+            <div class="icone">
+              <i class="fas fa-users"> <%= flat.number_of_guests %></i>
+              <i class="fas fa-euro-sign"> <%= flat.price_per_night %></i>
+            </div>
+          </div>
+          <div class="flat-actions">
+            <%= link_to "More info", flat_path(flat), class: "link"%> | <%= link_to "Edit", edit_flat_path(flat), class: "link"%> | <%= link_to "Remove", flat_path(flat), method: :delete, data: { confirm: "Are you sure?" }, class: "link"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
